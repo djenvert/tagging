@@ -88,7 +88,7 @@ class TagsController extends TaggingAppController
 			$this->cakeError('error404', array(array('url' => $this->action)));
 		}
 		
-		$tagged = $this->paginate('Tagged', array('Tag.id' => $tag['Tag']['id']));
+		$tagged = $this->paginate('Tagged', array('Tagged.tag_id' => $tag['Tag']['id']));
 		
 		// Build $data with actual Models data
 		$data = array();
