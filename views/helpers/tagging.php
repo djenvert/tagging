@@ -1,7 +1,7 @@
 <?php
 class TaggingHelper extends AppHelper
 {
-	var $helpers = array('Html', 'Form', 'Javascript');
+	var $helpers = array('Html', 'Form', 'Js');
 	
 	/**
 	 * Init flag to avoid including js and css files multiple times.
@@ -67,13 +67,13 @@ class TaggingHelper extends AppHelper
 					alert('{$alert_mssg}');
 				}";
 	
-				$this->Javascript->codeBlock($alert, array('inline' => false));
+				$this->Html->scriptBlock($alert, array('inline' => false));
 			}
 			
 			// jQuery Tag plugin
 			// ©Remy Sharp
 			// http://remysharp.com/2007/12/28/jquery-tag-suggestion/
-			$this->Javascript->link('/tagging/js/tag.js', false);
+			$this->Html->script('/tagging/js/tag.js', false);
 			
 			// Tag plugin CSS
 			$this->Html->css('/tagging/css/tagging.css', null, array('media' => 'screen'), false);
@@ -95,11 +95,11 @@ class TaggingHelper extends AppHelper
 		
 		$script = "$(function () {
 			$('{$selector}').tagSuggest(
-				{$this->Javascript->object($options)}
+				{$this->Js->object($options)}
 			);
 		});";
 		
-		$this->Javascript->codeBlock($script, array('inline' => false));
+		$this->Html->scriptBlock($script, array('inline' => false));
 	}
 	
 	/**
